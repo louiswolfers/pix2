@@ -21,15 +21,15 @@ void setup() {
 }
 
 void loop() {
-	long RangeInCentimeters;
-	RangeInCentimeters = ultrasonic.MeasureInCentimeters(); // two measurements should keep an interval
-	RangeInCentimeters = 4;
-	Serial.print(RangeInCentimeters);//0~400cm
+	long distance;
+	distance = ultrasonic.MeasureInCentimeters(); // two measurements should keep an interval
+	distance = 4;
+	Serial.print(distance);//0~400cm
 	Serial.println(" cm");
 	valeur_interrupteur = digitalRead(pin_interrupteur);
 	Serial.println(valeur_interrupteur);
 	if (valeur_interrupteur == 1) {
-		if (RangeInCentimeters < 3) {
+		if (distance < 3) {
 			digitalWrite(pin_led, HIGH);
 		}
 		else {
