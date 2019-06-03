@@ -25,8 +25,10 @@ int pin_led = 2; // pin de la led
 int valeur_recepteur = 0;
 int valeur_interrupteur = 0;
 
-Ultrasonic ultrasonic(pin_distance_sig); // Initialisation de l'objet ultrasonic pour pouvoir controler le moteur
-RH_ASK rf_driver; // Initialisation de l'objet rf_driver pour recevoir des donnees par radio
+// Initialisation de l'objet ultrasonic pour pouvoir controler le moteur
+Ultrasonic ultrasonic(pin_distance_sig);
+// Initialisation de l'objet rf_driver pour recevoir des donnees par radio
+RH_ASK rf_driver; 
 
 void setup() {
   pinMode(pin_recepteur, INPUT);
@@ -68,15 +70,14 @@ Pour l'Arduino "bracelet"
 #include <RH_ASK.h> // Librairie RadioHead pour le recepteur-emetteur radio
 #include <SPI.h> // Librairie necessaire a RadioHead pour compiler
 
-RH_ASK rf_driver; // Initialisation de l'objet rf_driver pour recevoir des donnees par radio
+// Initialisation de l'objet rf_driver pour recevoir des donnees par radio
+RH_ASK rf_driver;
 
 void setup() {
-  // put your setup code here, to run once:
   rf_driver.init();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   uint8_t msg = 1;
   rf_driver.send((uint8_t *) msg, strlen(msg));
   rf_driver.waitPacketSent();
